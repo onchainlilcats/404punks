@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Punksx402</title>
+  <meta name="description" content="First 10000 CryptoPunks nft minted in the x402 protocol." />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#0000FF" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Punksx402" />
+  <meta property="og:url" content="https://www.Punksx402.xyz/" />
+  <meta property="og:title" content="Punksx402 nft 4 USDC on Base" />
+  <meta property="og:description" content="First 10000 CryptoPunks nft minted in the x402 protocol." />
+  <meta property="og:image" content="https://www.Punksx402.xyz/Punksx402.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Punksx402 4 nft USDC on Base" />
+  <meta name="twitter:description" content="First 10000 CryptoPunks nft minted in the x402 protocol." />
+  <meta name="twitter:image" content="https://x402punks.pages.dev/Punksx402.png" />
+
+  <style>
+    :root{
+      --bg:#0000FF;
+      --glass:rgba(255,255,255,.13);
+      --glass-2:rgba(255,255,255,.10);
+      --border:rgba(255,255,255,.55);
+      --shadow:0 20px 50px rgba(0,0,90,.45);
+      --ink:#fff; --muted:#d6d6e7;
+      --blue:#2563eb; --blue-hover:#1d4ed8;
+      --green:#10b981; --green-hover:#059669;
+      --accent:#e649da;
+      --red:#dc2626; --red-hover:#b91c1c;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh; display:grid; place-items:center; padding:28px;
+      color:var(--ink);
+      font-family:'Inter',-apple-system,Segoe UI,Roboto,sans-serif;
+      background:
+        radial-gradient(1100px 760px at 18% 22%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(900px 700px at 80% 80%, rgba(0,0,0,.28), transparent 62%),
+        var(--bg);
+    }
+    .shell{
+      width:min(1860px,96vw);
+      display:grid;
+      grid-template-columns:minmax(340px,1fr) minmax(380px,1fr) minmax(420px,1fr);
+      gap:24px; align-items:stretch;
+    }
+    .card{
+      background:var(--glass); border:2px solid var(--border);
+      border-radius:22px; backdrop-filter:blur(14px) saturate(1.2);
+      box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column; padding:22px;
+    }
+    .art-frame{
+      flex:1; display:grid; place-items:center; border-radius:16px; overflow:hidden;
+      background:var(--glass-2);
+      height:clamp(320px, 46vh, 460px);
+    }
+    .art{width:100%; height:100%; object-fit:contain; image-rendering:pixelated;}
+
+    .pixel{ font-family:'Press Start 2P', monospace; letter-spacing:.4px; }
+    .pixel-sm{ font-family:'Press Start 2P', monospace; font-size:.78rem; letter-spacing:.3px; }
+
+    .panel h2{ text-align:center; margin-bottom:.5rem; }
+    .panel .sub{ text-align:center; color:var(--muted); margin-bottom:1rem; }
+    .punk-pink{ color:var(--accent); }
+    .x402-white{ color:#fff; }
+
+    .addr-pixel{
+      display:flex; align-items:center; justify-content:center; gap:.25ch;
+      border:1.5px solid rgba(255,255,255,.45); border-radius:14px;
+      padding:.8rem 1rem; margin-bottom:10px; background:rgba(0,0,0,.08);
+    }
+    .addr-pixel .chunk-punks{ color:var(--accent); }
+    .addr-pixel .ellipsis, .addr-pixel .chunk-x402{ color:#fff; }
+    .addr-pixel .chunk{ font-family:'Press Start 2P', monospace; font-size:.9rem; }
+
+    .button{ border:none; border-radius:14px; color:#fff; font-weight:800; padding:1.05rem 1.1rem; cursor:pointer; transition:.15s; width:100%; box-shadow:0 6px 18px rgba(0,0,0,.25);}
+    .button:hover{ transform:translateY(-2px); filter:brightness(1.05); }
+    .btn-blue{ background:var(--blue);} .btn-blue:hover{ background:var(--blue-hover); }
+    .btn-green{ background:var(--green);} .btn-green:hover{ background:var(--green-hover); }
+    .btn-red{ background:var(--red);} .btn-red:hover{ background:var(--red-hover); }
+
+    .row{ margin-top:10px; border:1.5px solid rgba(255,255,255,.35); border-radius:12px; padding:.7rem 1rem; background:rgba(255,255,255,.08);}
+    .row .label{ color:var(--muted); margin-bottom:.35rem; }
+    .status{ text-align:center; color:#e5e7eb; font-size:.95rem; margin-top:10px; min-height:1.2rem; }
+
+    .brand{ display:flex; gap:.6ch; align-items:flex-end; user-select:none; margin-bottom:.6rem; }
+    .brand .punks{ color:var(--accent); }
+    .brand .x402{ color:#fff; }
+    .brand .punks, .brand .x402{ font-family:'Press Start 2P', monospace; font-size:clamp(26px,3.6vw,42px); line-height:1.1; }
+    .copy p{ color:var(--muted); line-height:1.6; margin:10px 0; }
+
+    .gallery{
+      margin-top:14px; background:var(--glass-2); border:1.5px solid var(--border);
+      border-radius:16px; padding:12px;
+      height:520px; 
+      overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain;
+    }
+    .gallery-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; position: relative; }
+    .gallery-head > .pixel-sm { position: absolute; left: 50%; transform: translateX(-50%); }
+    .gallery-head button { margin-left: auto; }
+
+    .grid{ display:grid; grid-template-columns:repeat(4,minmax(110px,1fr)); gap:10px; }
+    .tile{
+      background:rgba(255,255,255,.38);
+      border:1.5px solid rgba(255,255,255,.5);
+      border-radius:12px; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
+      color:#111; font-weight:800; position:relative; overflow:hidden; /* recorta puntas */
+    }
+
+    .toast{ position:fixed; left:50%; top:18px; transform:translateX(-50%); padding:.75rem 1rem; border-radius:.8rem; box-shadow:var(--shadow); color:#fff; font-weight:800; z-index:9999; display:none;}
+    .toast.on{ display:block; } .toast.ok{ background:#16a34a; } .toast.err{ background:#dc2626; }
+
+    @media (max-width:1280px){
+      .grid{ grid-template-columns:repeat(3,minmax(110px,1fr)); }
+      .gallery{ height:480px; }
+    }
+
+    @media (max-width:1020px){
+      .shell{ grid-template-columns:1fr; }
+      .art-frame{ height:clamp(260px, 40vh, 380px); }
+      .grid{ grid-template-columns:repeat(2,minmax(120px,1fr)); }
+      .gallery{ height:440px; }
+    }
+
+    .card.copy { text-align: center; }
+    .panel .row { text-align: center; }
+    .card.copy .brand { justify-content: center; }
+    .gallery-head { position: relative; }
+    .gallery-head > .pixel-sm { position: absolute; left: 50%; transform: translateX(-50%); }
+    .gallery-head button { margin-left: auto; }
+  </style>
+</head>
+<body>
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <div class="shell">
+    <div class="card">
+      <div class="art-frame"><img class="art" src="/Punksx402.gif" alt="Punksx402" /></div>
+    </div>
+
+    <div class="card panel">
+      <h2 class="pixel"><span class="punk-pink">Punks</span><span class="x402-white">x402</span> Mint</h2>
+      <div class="sub pixel-sm">Mint with USDC on Base</div>
+
+      <div id="addrPixel" class="addr-pixel pixel-sm">
+        <span class="chunk chunk-punks">0x0000</span><span class="ellipsis">…</span><span class="chunk chunk-x402">0000</span>
+      </div>
+
+      <button id="btn-connect" class="button btn-blue">Connect Wallet</button>
+
+      <div class="row">
+        <div class="label pixel-sm">Amount</div>
+        <div class="pixel-sm"> $4 USDC</div>
+      </div>
+      <div class="row">
+        <div class="label pixel-sm">Network</div>
+        <div class="pixel-sm"> Base</div>
+      </div>
+
+      <button id="btn-pay" class="button btn-green" style="margin-top:10px;">
+        MINT <span class="punk-pink">PUNKS</span>x402
+      </button>
+      <div class="pixel-sm" style="text-align:center; opacity:.9; margin-top:6px;">Pay in USDC on Base</div>
+
+      <div id="status" class="status">—</div>
+    </div>
+
+    <div class="card copy">
+      <div class="brand"><span class="punks">Punks</span><span class="x402">x402</span></div>
+      <p>First 10000 CryptoPunks nft minted in the x402 protocol.</p>
+      <p>Built for agents and humans.</p>
+      <p>Ready to mint? Connect your wallet and join us on this journey.</p>
+
+      <div class="gallery">
+        <div class="gallery-head">
+          <span class="pixel-sm" style="opacity:.9;">Your Minted Punksx402:</span>
+          <button id="btn-load-gallery" class="button btn-blue" style="width:auto; padding:.55rem .9rem; font-size:.9rem;">REFRESH</button>
+        </div>
+        <div id="galleryGrid" class="grid"></div>
+        <div id="galleryHint" class="status" style="margin:6px 0 0 0;">Connect your wallet, then click “Refresh” to see your minted Punksx402, it may take a few seconds to appear.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.x402 = {
+      paymentRequirements: {
+        scheme: "exact",
+        network: "base",
+        maxAmountRequired: "4000000",
+        resource: "/api/mint",
+        description: "Mint 1 Punksx402 for $4 USDC",
+        mimeType: "application/json",
+        payTo: "0x624f6a53f142ad218103a6a9afbdfbfaf5f171b3",
+        maxTimeoutSeconds: 60,
+        asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        extra: { name: "USD Coin", version: "2" }
+      }
+    };
+  </script>
+
+  <script type="module">
+    import { createWalletClient, custom } from 'https://esm.sh/viem';
+    import { base } from 'https://esm.sh/viem/chains';
+    import { createConfig, connect, disconnect, switchChain } from 'https://esm.sh/@wagmi/core';
+    import { injected, coinbaseWallet } from 'https://esm.sh/@wagmi/connectors';
+
+    const $$=(s,r=document)=>r.querySelector(s);
+    const toast=(m,k='ok',ms=3200)=>{const el=$$('#toast');el.className=`toast on ${k}`;el.textContent=m;setTimeout(()=>el.classList.remove('on'),ms);};
+
+    const addrPixel=$$('#addrPixel'), btnConn=$$('#btn-connect'), btnPay=$$('#btn-pay'), statusEl=$$('#status');
+    const gBtn=$$('#btn-load-gallery'), gGrid=$$('#galleryGrid'), gHint=$$('#galleryHint');
+    const req = window.x402.paymentRequirements;
+
+    const OWNERS_URLS = [
+      '/api/owners',
+      'https://kxnfifbmicjhqoxs.public.blob.vercel-storage.com/mints/owners.json'
+    ];
+
+    btnPay.disabled = true; btnPay.style.opacity=.9;
+
+    const wagmi = createConfig({
+      chains:[base],
+      connectors:[ coinbaseWallet({appName:'Punksx402'}), injected() ],
+      transports:{ [base.id]: custom(window.ethereum) }
+    });
+
+    let walletClient=null;
+
+    const formatAddrPixel = (a='0x0000000000000000000000000000000000000000')=>{
+      const pre = a.slice(0,6), suf = a.slice(-4);
+      addrPixel.innerHTML = `
+        <span class="chunk chunk-punks">${pre}</span>
+        <span class="ellipsis">…</span>
+        <span class="chunk chunk-x402">${suf}</span>
+      `;
+    };
+    formatAddrPixel();
+
+    let autoTimer = null;
+    let lastKey = '';
+    let unchangedTicks = 0;
+    const REFRESH_EVERY_MS = 8000;
+    const STOP_AFTER_TICKS = 6;
+    const keyFrom = (items) => items.map(x => x.id).join(',');
+
+    function startAutoRefresh(){
+      if (autoTimer) return;
+      unchangedTicks = 0;
+      autoTimer = setInterval(async () => {
+        const changed = await loadGalleryOnce();
+        unchangedTicks = changed ? 0 : (unchangedTicks + 1);
+        if (unchangedTicks >= STOP_AFTER_TICKS) {
+          stopAutoRefresh();
+          gHint.textContent = 'Up to date';
+        }
+      }, REFRESH_EVERY_MS);
+    }
+
+    function stopAutoRefresh(){
+      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    }
+
+    function setConnectedUI(a){
+      formatAddrPixel(a);
+      statusEl.textContent = 'Wallet connected';
+      btnConn.textContent = 'Disconnect Wallet';
+      btnConn.classList.remove('btn-blue');
+      btnConn.classList.add('btn-red');
+      btnPay.disabled = false;
+      btnPay.style.opacity = 1;
+
+      startAutoRefresh();
+      setTimeout(() => { try { gBtn.click(); } catch {} }, 200);
+    }
+    function setDisconnectedUI(){
+      formatAddrPixel();
+      statusEl.textContent = '—';
+      btnConn.textContent = 'Connect Wallet';
+      btnConn.classList.remove('btn-red');
+      btnConn.classList.add('btn-blue');
+      btnPay.disabled = true;
+      btnPay.style.opacity = .9;
+
+      stopAutoRefresh();
+      gGrid.innerHTML = '';
+      gHint.textContent = 'Connect your wallet, then click “Refresh”…';
+      lastKey = '';
+    }
+
+    btnConn.onclick = async () => {
+      if(!window.ethereum){ toast('Install MetaMask or Coinbase Wallet','err'); return; }
+      if(walletClient){ await disconnect(wagmi).catch(()=>{}); walletClient=null; setDisconnectedUI(); return; }
+      try{
+        btnConn.disabled=true; statusEl.textContent='Connecting…';
+        await switchChain(wagmi,{ chainId: base.id }).catch(()=>{});
+        const res = await connect(wagmi,{ connector: injected(), chainId: base.id });
+        const account = res.accounts?.[0]; if(!account) throw new Error('No account selected');
+        walletClient = createWalletClient({ account, chain: base, transport: custom(window.ethereum) });
+        setConnectedUI(account); toast('Wallet connected','ok');
+      }catch(e){ toast(e?.message || 'Failed to connect','err'); setDisconnectedUI(); }
+      finally{ btnConn.disabled=false; }
+    };
+
+    btnPay.onclick = async () => {
+      if(!walletClient){ toast('Connect wallet first','err'); return; }
+      const prevHTML = btnPay.innerHTML;
+      try{
+        btnPay.innerHTML = 'Signing…';
+        btnPay.disabled = true;
+        statusEl.textContent = 'Creating authorization…';
+
+        const now = Math.floor(Date.now()/1000);
+        const validAfter  = BigInt(now-5);
+        const validBefore = BigInt(now + req.maxTimeoutSeconds);
+        const nonce = '0x' + Array.from(crypto.getRandomValues(new Uint8Array(32)), b=>b.toString(16).padStart(2,'0')).join('');
+        const args = { from: walletClient.account.address, to: req.payTo, value: req.maxAmountRequired, validAfter, validBefore, nonce };
+
+        const TYPES = {
+          EIP712Domain: [
+            { name:'name', type:'string' },{ name:'version', type:'string' },
+            { name:'chainId', type:'uint256' },{ name:'verifyingContract', type:'address' }
+          ],
+          TransferWithAuthorization: [
+            { name:'from', type:'address' },{ name:'to', type:'address' },{ name:'value', type:'uint256' },
+            { name:'validAfter', type:'uint256' },{ name:'validBefore', type:'uint256' },{ name:'nonce', type:'bytes32' }
+          ]
+        };
+
+        const signature = await walletClient.signTypedData({
+          account: walletClient.account,
+          types: TYPES,
+          domain: { name:'USD Coin', version:'2', chainId:8453, verifyingContract:req.asset },
+          primaryType:'TransferWithAuthorization',
+          message: args
+        });
+
+        const payload = {
+          x402Version: 1,
+          scheme: req.scheme,
+          network: req.network,
+          payload: { signature, authorization: { ...args } }
+        };
+        const header = btoa(JSON.stringify(payload, (_, v) =>
+          typeof v === 'bigint' ? v.toString() : v
+        ));
+
+        statusEl.textContent='Requesting mint…';
+        const res = await fetch(req.resource, { headers: { 'X-PAYMENT': header } });
+
+        if(res.ok){
+          toast('✅ Mint successful','ok');
+          statusEl.textContent='Mint completed!';
+          return;
+        }
+
+        const ct  = res.headers.get('content-type') || '';
+        const raw = await res.text();
+        let json  = null;
+        try { if (ct.includes('application/json')) json = JSON.parse(raw); } catch {}
+
+        const errStr = String(json?.error || json?.message || raw || '').toUpperCase();
+
+        let msg = '';
+        if (errStr.includes('INSUFFICIENT') && errStr.includes('USDC')) {
+          msg = 'Insufficient USDC — top up and try again';
+        } else if (errStr.includes('INSUFFICIENT') && errStr.includes('BALANCE')) {
+          msg = 'Insufficient USDC — top up and try again';
+        } else if (errStr.includes('EXPIRED')) {
+          msg = '⏳ Signature expired — sign again';
+        } else if (errStr.includes('INVALID') || errStr.includes('UNAUTHORIZED')) {
+          msg = 'Invalid signature — reconnect your wallet and try again';
+        } else if (res.status === 402) {
+          msg = 'Payment required — check balance and signature';
+        } else {
+          msg = json?.error || json?.message || raw || 'Payment failed';
+        }
+
+        toast(msg,'err');
+        statusEl.textContent = '';
+
+      }catch(e){
+        toast(e?.message || 'Mint failed','err');
+        statusEl.textContent='Error';
+      }finally{
+        btnPay.innerHTML = prevHTML;
+        btnPay.disabled = false;
+      }
+    };
+
+    async function fetchOwnersAny(){
+      for (const u of OWNERS_URLS) {
+        try {
+          const r = await fetch(u + '?v=' + Date.now(), { cache: 'no-store' });
+          if (r.ok) return await r.json();
+        } catch {}
+      }
+      return null;
+    }
+
+    async function loadGalleryOnce() {
+      if (!walletClient?.account?.address) { toast('Connect wallet first','err'); return false; }
+      const owner = walletClient.account.address.toLowerCase();
+
+      const owners = await fetchOwnersAny();
+      if (!owners) { gHint.textContent = 'No Punksx402 data yet.'; return false; }
+
+      const items = (owners[owner] || []).sort((a,b)=>a.id-b.id);
+
+      const newKey = keyFrom(items);
+      const changed = newKey !== lastKey;
+      lastKey = newKey;
+
+      gGrid.innerHTML = '';
+      if (!items.length) { gHint.textContent = 'No Punksx402 found for this wallet.'; return changed; }
+
+      for (const it of items) {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+
+        const img = new Image();
+        img.className = 'art';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = `Punksx402 #${it.id}`;
+        img.src = `/api/img/${it.id}?t=${Date.now()}`;
+
+        const label = document.createElement('div');
+        label.style.position='absolute'; label.style.bottom='6px'; label.style.right='8px';
+        label.style.fontFamily='"Press Start 2P", monospace'; label.style.fontSize='10px';
+        label.style.background='rgba(255,255,255,.75)'; label.style.padding='2px 4px';
+        label.style.borderRadius='6px'; label.style.color='#111';
+        label.textContent = `#${it.id}`;
+
+        tile.appendChild(img);
+        tile.appendChild(label);
+        gGrid.appendChild(tile);
+      }
+      gHint.textContent = `Loaded ${items.length} item(s).`;
+      return changed;
+    }
+
+    gBtn.onclick = async () => {
+      gBtn.disabled = true;
+      const prev = gBtn.textContent;
+      gBtn.textContent = 'REFRESHING…';
+      try { await loadGalleryOnce(); } finally {
+        gBtn.textContent = prev;
+        gBtn.disabled = false;
+      }
+    };
+  </script>
+</body>
+</html>
