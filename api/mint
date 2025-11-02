@@ -6,7 +6,7 @@
       "scheme": "exact",
       "network": "base",
       "maxAmountRequired": "4000000",
-      "resource": "https://www.Punksx402.xyz/api/mint",
+      "resource": "https://404punks.vercel.app/api/mint",
       "description": "Mint 1 Punksx402 NFT 4 USDC",
       "mimeType": "application/json",
       "payTo": "0x624f6A53F142ad218103A6A9aFbDFbfAF5f171B3",
@@ -32,4 +32,5 @@
       }
     }
   ]
+
 }
